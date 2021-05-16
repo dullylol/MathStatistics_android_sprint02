@@ -303,7 +303,7 @@ class DispersionAnalysis(
             return when (this) {
                 A001 -> {
                     val k1 = when {
-                        (_k1 < 0) -> 1
+                        (_k1 <= 0) -> 1
                         (_k1 in 20..21) -> 20
                         (_k1 in 22..23) -> 21
                         (_k1 in 24..25) -> 22
@@ -318,7 +318,7 @@ class DispersionAnalysis(
                     }
 
                     val k2 = when {
-                        (_k2 < 0) -> 1
+                        (_k2 <= 0) -> 1
                         (_k2 in 13..18) -> 12
                         (_k2 in 19..30) -> 13
                         (_k2 > 30) -> 14
@@ -329,7 +329,7 @@ class DispersionAnalysis(
                 }
                 A005 -> {
                     val k1 = when {
-                        (_k1 < 0) -> 1
+                        (_k1 <= 0) -> 1
                         (_k1 in 31..33) -> 30
                         (_k1 in 34..38) -> 31
                         (_k1 in 39..43) -> 32
@@ -352,7 +352,7 @@ class DispersionAnalysis(
                     }
 
                     val k2 = when {
-                        (_k2 < 0) -> 1
+                        (_k2 <= 0) -> 1
                         (_k2 == 7) -> 6
                         (_k2 in 8..10) -> 7
                         (_k2 in 11..18) -> 8
