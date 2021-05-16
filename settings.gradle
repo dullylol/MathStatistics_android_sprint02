@@ -1,0 +1,2 @@
+rootProject.name = "MS sprint02"
+include ':app'
