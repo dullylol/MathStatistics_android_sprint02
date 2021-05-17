@@ -76,7 +76,7 @@ class DispersionAnalysis(
                     Pair("factor_A", 0.0),
                     Pair("factor_B", 0.0),
                     Pair("factors_A_and_B", 0.0),
-                    Pair("factors_A_and_B_influence", 0.0),
+                    Pair("factors_random_influence", 0.0),
                     Pair("total_dispersion", 0.0)
                 )
             ),
@@ -85,7 +85,7 @@ class DispersionAnalysis(
                     Pair("factor_A", 0.0),
                     Pair("factor_B", 0.0),
                     Pair("factors_A_and_B", 0.0),
-                    Pair("factors_A_and_B_influence", 0.0),
+                    Pair("factors_random_influence", 0.0),
                     Pair("total_dispersion", 0.0)
                 )
             ),
@@ -94,7 +94,7 @@ class DispersionAnalysis(
                     Pair("factor_A", 0.0),
                     Pair("factor_B", 0.0),
                     Pair("factors_A_and_B", 0.0),
-                    Pair("factors_A_and_B_influence", 0.0),
+                    Pair("factors_random_influence", 0.0),
                     Pair("total_dispersion", 0.0)
                 )
             )
@@ -136,7 +136,7 @@ class DispersionAnalysis(
                 }
             }
         }
-        values["deviations_squares_sum"]!!["factors_A_and_B_influence"] = sumABBlocks
+        values["deviations_squares_sum"]!!["factors_random_influence"] = sumABBlocks
         values["deviations_squares_sum"]!!["total_dispersion"] = sumABBlockTotal
 
         values["deviations_squares_sum"]!!
@@ -147,7 +147,7 @@ class DispersionAnalysis(
         values["free_degrees"]!!["factor_B"] = factorBSize - 1.0
         values["free_degrees"]!!["factors_A_and_B"] =
             (factorASize - 1.0) * (factorBSize - 1.0)
-        values["free_degrees"]!!["factors_A_and_B_influence"] =
+        values["free_degrees"]!!["factors_random_influence"] =
             totalValuesCount.toDouble() - factorASize * factorBSize
         values["free_degrees"]!!["total_dispersion"] = totalValuesCount - 1.0
 
@@ -164,9 +164,9 @@ class DispersionAnalysis(
         values["corrected_dispersions"]!!["factors_A_and_B"] =
             deviationsSquaresSum["factors_A_and_B"]!! / freeDegrees["factors_A_and_B"]!!
 
-        values["corrected_dispersions"]!!["factors_A_and_B_influence"] =
-            deviationsSquaresSum["factors_A_and_B_influence"]!! /
-                    freeDegrees["factors_A_and_B_influence"]!!
+        values["corrected_dispersions"]!!["factors_random_influence"] =
+            deviationsSquaresSum["factors_random_influence"]!! /
+                    freeDegrees["factors_random_influence"]!!
 
         values["corrected_dispersions"]!!["total_dispersion"] =
             deviationsSquaresSum["total_dispersion"]!! / freeDegrees["total_dispersion"]!!
@@ -177,9 +177,9 @@ class DispersionAnalysis(
 
     fun isFactorAInfluence(): Boolean {
         val fA = correctedDispersions["factor_A"]!! /
-                correctedDispersions["factors_A_and_B_influence"]!!
+                correctedDispersions["factors_random_influence"]!!
         val criticalPoint = significanceLevel.criticalPoint(
-            freeDegrees["factors_A_and_B_influence"]!!.toInt() - 1,
+            freeDegrees["factors_random_influence"]!!.toInt() - 1,
             freeDegrees["factor_A"]!!.toInt() - 1
         )
         return fA > criticalPoint
@@ -187,9 +187,9 @@ class DispersionAnalysis(
 
     fun isFactorBInfluence(): Boolean {
         val fB = correctedDispersions["factor_B"]!! /
-                correctedDispersions["factors_A_and_B_influence"]!!
+                correctedDispersions["factors_random_influence"]!!
         val criticalPoint = significanceLevel.criticalPoint(
-            freeDegrees["factors_A_and_B_influence"]!!.toInt() - 1,
+            freeDegrees["factors_random_influence"]!!.toInt() - 1,
             freeDegrees["factor_B"]!!.toInt() - 1
         )
         return fB > criticalPoint
@@ -197,9 +197,9 @@ class DispersionAnalysis(
 
     fun isFactorsABInfluence(): Boolean {
         val fAB = correctedDispersions["factors_A_and_B"]!! /
-                correctedDispersions["factors_A_and_B_influence"]!!
+                correctedDispersions["factors_random_influence"]!!
         val criticalPoint = significanceLevel.criticalPoint(
-            freeDegrees["factors_A_and_B_influence"]!!.toInt() - 1,
+            freeDegrees["factors_random_influence"]!!.toInt() - 1,
             freeDegrees["factors_A_and_B"]!!.toInt() - 1
         )
         return fAB > criticalPoint

@@ -47,19 +47,43 @@
                     android:gravity="center"
                     android:layout_margin="5dp"/>
 
+                <EditText
+                    android:id="@+id/factors_block_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:layout_weight="1"
+                    android:maxLength="2"
+                    android:hint="@string/factors_block_size_hint"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <EditText
-                android:id="@+id/factors_block_size"
+
+            <RadioGroup
+                android:id="@+id/significance_level"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:layout_weight="1"
-                android:maxLength="2"
-                android:hint="@string/factors_block_size_hint"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"/>
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:layout_gravity="center">
+
+                <RadioButton
+                    android:id="@+id/a001"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/a_0_01"
+                    android:layout_marginEnd="20dp"
+                    android:checked="true"/>
+
+                <RadioButton
+                    android:id="@+id/a005"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/a_0_05"
+                    android:layout_marginStart="20dp"/>
+            </RadioGroup>
 
             <Button
                 android:id="@+id/create_table_btn"
@@ -117,31 +141,35 @@
                             android:layout_height="wrap_content" >
 
                             <TextView
-                                android:id="@+id/textView3"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TextView"
+                                android:layout_height="50dp"
+                                android:text="@string/source_txt"
+                                android:gravity="center"
+                                android:padding="5dp"
                                 style="@style/Border"/>
 
                             <TextView
-                                android:id="@+id/textView4"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TextView"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:padding="5dp"
+                                android:text="@string/deviations_squares_sum_txt"
                                 style="@style/Border"/>
 
                             <TextView
-                                android:id="@+id/textView5"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TextView"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:padding="5dp"
+                                android:text="@string/free_degrees_txt"
                                 style="@style/Border"/>
 
                             <TextView
-                                android:id="@+id/textView2"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TextView"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:padding="5dp"
+                                android:text="@string/corrected_dispersions_txt"
                                 style="@style/Border"/>
 
                         </TableRow>
@@ -151,64 +179,35 @@
                             android:layout_height="wrap_content" >
 
                             <TextView
-                                android:id="@+id/textView6"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TextView"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:padding="5dp"
+                                android:text="@string/factor_a_txt"
                                 style="@style/Border"/>
 
                             <TextView
-                                android:id="@+id/textView7"
+                                android:id="@+id/deviation_squares_sum_1"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TextView"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:padding="5dp"
                                 style="@style/Border"/>
 
                             <TextView
-                                android:id="@+id/textView8"
+                                android:id="@+id/free_degrees_1"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TextView"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:padding="5dp"
                                 style="@style/Border"/>
 
                             <TextView
-                                android:id="@+id/textView9"
+                                android:id="@+id/corrected_dispersion_1"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TextView"
-                                style="@style/Border"/>
-                        </TableRow>
-
-                        <TableRow
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" >
-
-                            <TextView
-                                android:id="@+id/textView10"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TextView"
-                                style="@style/Border"/>
-
-                            <TextView
-                                android:id="@+id/textView11"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TextView"
-                                style="@style/Border"/>
-
-                            <TextView
-                                android:id="@+id/textView12"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TextView"
-                                style="@style/Border"/>
-
-                            <TextView
-                                android:id="@+id/textView13"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TextView"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:padding="5dp"
                                 style="@style/Border"/>
                         </TableRow>
 
@@ -217,31 +216,72 @@
                             android:layout_height="wrap_content" >
 
                             <TextView
-                                android:id="@+id/textView14"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TextView"
+                                android:layout_height="50dp"
+                                android:text="@string/factor_b_txt"
+                                android:gravity="center"
+                                android:padding="5dp"
                                 style="@style/Border"/>
 
                             <TextView
-                                android:id="@+id/textView15"
+                                android:id="@+id/deviation_squares_sum_2"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TextView"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:padding="5dp"
                                 style="@style/Border"/>
 
                             <TextView
-                                android:id="@+id/textView16"
+                                android:id="@+id/free_degrees_2"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TextView"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:padding="5dp"
                                 style="@style/Border"/>
 
                             <TextView
-                                android:id="@+id/textView17"
+                                android:id="@+id/corrected_dispersion_2"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TextView"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:padding="5dp"
+                                style="@style/Border"/>
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:padding="5dp"
+                                android:text="@string/factor_a_and_b_influence_txt"
+                                style="@style/Border"/>
+
+                            <TextView
+                                android:id="@+id/deviation_squares_sum_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:padding="5dp"
+                                style="@style/Border"/>
+
+                            <TextView
+                                android:id="@+id/free_degrees_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:padding="5dp"
+                                style="@style/Border"/>
+
+                            <TextView
+                                android:id="@+id/corrected_dispersion_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:padding="5dp"
                                 style="@style/Border" />
                         </TableRow>
 
@@ -250,31 +290,35 @@
                             android:layout_height="wrap_content" >
 
                             <TextView
-                                android:id="@+id/textView18"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TextView"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:padding="5dp"
+                                android:text="@string/random_factors_influence_txt"
                                 style="@style/Border"/>
 
                             <TextView
-                                android:id="@+id/textView19"
+                                android:id="@+id/deviation_squares_sum_4"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TextView"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:padding="5dp"
                                 style="@style/Border"/>
 
                             <TextView
-                                android:id="@+id/textView20"
+                                android:id="@+id/free_degrees_4"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TextView"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:padding="5dp"
                                 style="@style/Border"/>
 
                             <TextView
-                                android:id="@+id/textView21"
+                                android:id="@+id/corrected_dispersion_4"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TextView"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:padding="5dp"
                                 style="@style/Border"/>
                         </TableRow>
 
@@ -283,37 +327,51 @@
                             android:layout_height="wrap_content" >
 
                             <TextView
-                                android:id="@+id/textView22"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TextView"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:padding="5dp"
+                                android:text="@string/total_dispersion_txt"
                                 style="@style/Border"/>
 
                             <TextView
-                                android:id="@+id/textView23"
+                                android:id="@+id/deviation_squares_sum_total"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TextView"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:padding="5dp"
                                 style="@style/Border" />
 
                             <TextView
-                                android:id="@+id/textView24"
+                                android:id="@+id/free_degrees_total"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TextView"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:padding="5dp"
                                 style="@style/Border"/>
 
                             <TextView
-                                android:id="@+id/textView25"
+                                android:id="@+id/corrected_dispersion_total"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="TextView"
+                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:padding="5dp"
                                 style="@style/Border"/>
                         </TableRow>
                     </TableLayout>
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
             </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/hypothesis_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:layout_gravity="center"
+                android:gravity="start"
+                android:visibility="gone"/>
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.core.widget.NestedScrollView>

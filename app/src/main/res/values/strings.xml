@@ -6,4 +6,18 @@
     <string name="create_factors_table_btn">Create factors table</string>
     <string name="do_dispersion_analysis_btn">Do dispersion analysis</string>
     <string name="set_default_values_btn">Set default values</string>
+    <string name="source_txt">Source</string>
+    <string name="deviations_squares_sum_txt">Deviations squares sum</string>
+    <string name="free_degrees_txt">Free degrees</string>
+    <string name="corrected_dispersions_txt">Corrected dispersions</string>
+    <string name="factor_a_txt">Factor A</string>
+    <string name="factor_b_txt">Factor B</string>
+    <string name="factor_a_and_b_influence_txt">Factor A and B influence</string>
+    <string name="random_factors_influence_txt">Random factors influence</string>
+    <string name="total_dispersion_txt">Total dispersion</string>
+    <string name="a_0_05">a = 0.05</string>
+    <string name="a_0_01">a = 0.01</string>
+    <string name="factors_influence">
+        Factor A influence: %1$s\nFactor B influence: %2$s\nFactor A and B influence: %3$s
+    </string>
 </resources>

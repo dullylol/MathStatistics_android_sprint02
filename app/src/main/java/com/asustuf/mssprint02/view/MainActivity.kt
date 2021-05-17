@@ -12,6 +12,7 @@ import androidx.appcompat.view.ContextThemeWrapper
 import androidx.core.widget.addTextChangedListener
 import com.asustuf.mssprint02.R
 import com.asustuf.mssprint02.databinding.ActivityMainBinding
+import com.asustuf.mssprint02.model.DispersionAnalysis
 import java.lang.NumberFormatException
 
 class MainActivity : AppCompatActivity() {
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() {
             binding.factorASize.setText("3")
             binding.factorBSize.setText("2")
             binding.factorsBlockSize.setText("10")
+            binding.a005.isChecked = true
             binding.createTableBtn.callOnClick()
 
             (((binding.inputFactorsTable
@@ -88,15 +90,23 @@ class MainActivity : AppCompatActivity() {
             }
             createTable(binding.inputFactorsTable, factorBSize, factorASize)
             binding.doDispersionAnalysisBtn.visibility = View.VISIBLE
-            binding.resultTable.visibility = View.VISIBLE
         }
 
         binding.doDispersionAnalysisBtn.setOnClickListener {
             try {
                 parseData()
-                doDispersionAnalysis()
+                doDispersionAnalysis(if (binding.a001.isChecked) {
+                    DispersionAnalysis.SignificanceLevel.A001
+                }
+                else {
+                    DispersionAnalysis.SignificanceLevel.A005
+                })
+                binding.resultTable.visibility = View.VISIBLE
+                binding.hypothesisResult.visibility = View.VISIBLE
             } catch (e: Exception) {
                 Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
+                binding.resultTable.visibility = View.GONE
+                binding.hypothesisResult.visibility = View.GONE
             }
         }
 
@@ -126,8 +136,53 @@ class MainActivity : AppCompatActivity() {
         this.factorsValues = factorsValues
     }
 
-    private fun doDispersionAnalysis() {
+    private fun doDispersionAnalysis(significanceLevel: DispersionAnalysis.SignificanceLevel) {
+        val dispersionAnalysis = DispersionAnalysis(factorsValues, significanceLevel)
 
+        // deviation squares sum
+        binding.deviationSquaresSum1.text =
+            dispersionAnalysis.deviationsSquaresSum["factor_A"].toString()
+        binding.deviationSquaresSum2.text =
+            dispersionAnalysis.deviationsSquaresSum["factor_B"].toString()
+        binding.deviationSquaresSum3.text =
+            dispersionAnalysis.deviationsSquaresSum["factors_A_and_B"].toString()
+        binding.deviationSquaresSum4.text =
+            dispersionAnalysis.deviationsSquaresSum["factors_random_influence"].toString()
+        binding.deviationSquaresSumTotal.text =
+            dispersionAnalysis.deviationsSquaresSum["total_dispersion"].toString()
+
+        // free degrees
+        binding.freeDegrees1.text =
+            dispersionAnalysis.freeDegrees["factor_A"]?.toInt().toString()
+        binding.freeDegrees2.text =
+            dispersionAnalysis.freeDegrees["factor_B"]?.toInt().toString()
+        binding.freeDegrees3.text =
+            dispersionAnalysis.freeDegrees["factors_A_and_B"]?.toInt().toString()
+        binding.freeDegrees4.text =
+            dispersionAnalysis.freeDegrees["factors_random_influence"]?.toInt().toString()
+        binding.freeDegreesTotal.text =
+            dispersionAnalysis.freeDegrees["total_dispersion"]?.toInt().toString()
+
+        // corrected dispersions
+        binding.correctedDispersion1.text =
+            dispersionAnalysis.correctedDispersions["factor_A"].toString()
+        binding.correctedDispersion2.text =
+            dispersionAnalysis.correctedDispersions["factor_B"].toString()
+        binding.correctedDispersion3.text =
+            dispersionAnalysis.correctedDispersions["factors_A_and_B"].toString()
+        binding.correctedDispersion4.text =
+            dispersionAnalysis.correctedDispersions["factors_random_influence"].toString()
+        binding.correctedDispersionTotal.text =
+            dispersionAnalysis.correctedDispersions["total_dispersion"].toString()
+
+        // hypothesis
+        binding.hypothesisResult.text =
+            getString(
+                R.string.factors_influence,
+                dispersionAnalysis.isFactorAInfluence().toString(),
+                dispersionAnalysis.isFactorBInfluence().toString(),
+                dispersionAnalysis.isFactorsABInfluence().toString()
+            )
     }
 
     @SuppressLint("SetTextI18n")
