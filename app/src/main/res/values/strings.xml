@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MS sprint02</string>
+    <string name="size_factor_a_hint">Size factor A</string>
+    <string name="size_factor_b_hint">Size factor B</string>
+    <string name="factors_block_size_hint">Block size</string>
+    <string name="create_factors_table_btn">Create factors table</string>
+    <string name="do_dispersion_analysis_btn">Do dispersion analysis</string>
+    <string name="set_default_values_btn">Set default values</string>
 </resources>
