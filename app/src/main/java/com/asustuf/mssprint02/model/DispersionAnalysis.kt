@@ -1,17 +1,21 @@
 package com.asustuf.mssprint02.model
 
 import kotlin.math.pow
+import kotlin.math.round
 
 class DispersionAnalysis(
     private val factorsValues: Array<Array<Array<Double>>>,
     private val significanceLevel: SignificanceLevel
 ) {
 
+    var accuracy = 5
+    set(value) = if (accuracy in 0..20) field = value else { }
+
     init {
         if (factorsValues.isEmpty() || factorsValues[0].isEmpty()) {
             throw DispersionAnalysisException("Empty array of factors!")
         }
-        var aSize = factorsValues[0][0].size
+        val aSize = factorsValues[0][0].size
 
         for (b in factorsValues) {
             for (a in b) {
@@ -174,37 +178,50 @@ class DispersionAnalysis(
         values["corrected_dispersions"]!!
     }
 
-
-    fun isFactorAInfluence(): Boolean {
-        val fA = correctedDispersions["factor_A"]!! /
-                correctedDispersions["factors_random_influence"]!!
-        val criticalPoint = significanceLevel.criticalPoint(
+    val criticalPointA by lazy {
+        significanceLevel.criticalPoint(
             freeDegrees["factors_random_influence"]!!.toInt() - 1,
             freeDegrees["factor_A"]!!.toInt() - 1
         )
-        return fA > criticalPoint
     }
 
-    fun isFactorBInfluence(): Boolean {
-        val fB = correctedDispersions["factor_B"]!! /
-                correctedDispersions["factors_random_influence"]!!
-        val criticalPoint = significanceLevel.criticalPoint(
+    val criticalPointB by lazy {
+        significanceLevel.criticalPoint(
             freeDegrees["factors_random_influence"]!!.toInt() - 1,
             freeDegrees["factor_B"]!!.toInt() - 1
         )
-        return fB > criticalPoint
     }
 
-    fun isFactorsABInfluence(): Boolean {
-        val fAB = correctedDispersions["factors_A_and_B"]!! /
-                correctedDispersions["factors_random_influence"]!!
-        val criticalPoint = significanceLevel.criticalPoint(
+    val criticalPointAB by lazy {
+        significanceLevel.criticalPoint(
             freeDegrees["factors_random_influence"]!!.toInt() - 1,
             freeDegrees["factors_A_and_B"]!!.toInt() - 1
         )
-        return fAB > criticalPoint
     }
 
+    val observedCriterionValueA by lazy {
+        roundTo(correctedDispersions["factor_A"]!! /
+                correctedDispersions["factors_random_influence"]!!)
+    }
+
+    val observedCriterionValueB by lazy {
+        roundTo(correctedDispersions["factor_B"]!! /
+                correctedDispersions["factors_random_influence"]!!)
+    }
+
+    val observedCriterionValueAB by lazy {
+        roundTo(correctedDispersions["factors_A_and_B"]!! /
+                correctedDispersions["factors_random_influence"]!!)
+    }
+
+
+    fun isFactorAInfluence(): Boolean = observedCriterionValueA > criticalPointA
+
+    fun isFactorBInfluence(): Boolean = observedCriterionValueB > criticalPointB
+
+    fun isFactorsABInfluence(): Boolean = observedCriterionValueAB > criticalPointAB
+
+    private fun roundTo(num: Double) = (num * 10.0.pow(accuracy)).toLong() / 10.0.pow(accuracy)
 
     class DispersionAnalysisException(message: String) : Exception(message)
 

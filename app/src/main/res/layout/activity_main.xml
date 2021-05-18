@@ -363,15 +363,140 @@
 
             </HorizontalScrollView>
 
-            <TextView
-                android:id="@+id/hypothesis_result"
-                android:layout_width="wrap_content"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/factor_a_result_card"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="22sp"
-                android:layout_gravity="center"
-                android:gravity="start"
-                android:visibility="gone"/>
+                android:layout_margin="5dp"
+                android:visibility="gone">
 
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="25sp"
+                        android:text="@string/factor_a_txt"/>
+
+                    <TextView
+                        android:id="@+id/critical_point_factor_a"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:gravity="start"
+                        android:textSize="20sp"/>
+
+                    <TextView
+                        android:id="@+id/observed_criterion_value_a"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:gravity="start"
+                        android:textSize="20sp"/>
+                    <TextView
+                        android:id="@+id/hypothesis_result_factor_a"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="22sp"
+                        android:layout_margin="8dp"
+                        android:gravity="start"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/factor_b_result_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="25sp"
+                        android:text="@string/factor_b_txt"/>
+
+                    <TextView
+                        android:id="@+id/critical_point_factor_b"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:gravity="start"
+                        android:textSize="20sp"/>
+
+                    <TextView
+                        android:id="@+id/observed_criterion_value_b"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:gravity="start"
+                        android:textSize="20sp"/>
+                    <TextView
+                        android:id="@+id/hypothesis_result_factor_b"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="22sp"
+                        android:layout_margin="8dp"
+                        android:gravity="start"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/factors_a_and_b_result_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="25sp"
+                        android:text="@string/factors_a_and_b_txt"/>
+
+                    <TextView
+                        android:id="@+id/critical_point_factors_a_b"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:gravity="start"
+                        android:textSize="20sp"/>
+
+                    <TextView
+                        android:id="@+id/observed_criterion_value_a_b"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:gravity="start"
+                        android:textSize="20sp"/>
+                    <TextView
+                        android:id="@+id/hypothesis_result_factors_a_b"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="22sp"
+                        android:layout_margin="8dp"
+                        android:gravity="start"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.cardview.widget.CardView>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.core.widget.NestedScrollView>

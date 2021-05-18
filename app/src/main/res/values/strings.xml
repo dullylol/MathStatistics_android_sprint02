@@ -17,7 +17,10 @@
     <string name="total_dispersion_txt">Total dispersion</string>
     <string name="a_0_05">a = 0.05</string>
     <string name="a_0_01">a = 0.01</string>
-    <string name="factors_influence">
-        Factor A influence: %1$s\nFactor B influence: %2$s\nFactor A and B influence: %3$s
-    </string>
+    <string name="factor_a_influence">Factor A influence: %1$s</string>
+    <string name="factor_b_influence">Factor B influence: %1$s</string>
+    <string name="factors_a_and_b_influence">Factors A and B influence: %1$s</string>
+    <string name="observed_criterion_value">Observed criterion value: %1$s</string>
+    <string name="critical_point">Critical point: %1$s</string>
+    <string name="factors_a_and_b_txt">Factors A and B</string>
 </resources>

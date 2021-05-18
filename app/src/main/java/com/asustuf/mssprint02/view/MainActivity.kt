@@ -102,11 +102,15 @@ class MainActivity : AppCompatActivity() {
                     DispersionAnalysis.SignificanceLevel.A005
                 })
                 binding.resultTable.visibility = View.VISIBLE
-                binding.hypothesisResult.visibility = View.VISIBLE
+                binding.factorAResultCard.visibility = View.VISIBLE
+                binding.factorBResultCard.visibility = View.VISIBLE
+                binding.factorsAAndBResultCard.visibility = View.VISIBLE
             } catch (e: Exception) {
                 Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
                 binding.resultTable.visibility = View.GONE
-                binding.hypothesisResult.visibility = View.GONE
+                binding.factorAResultCard.visibility = View.GONE
+                binding.factorBResultCard.visibility = View.GONE
+                binding.factorsAAndBResultCard.visibility = View.GONE
             }
         }
 
@@ -175,12 +179,56 @@ class MainActivity : AppCompatActivity() {
         binding.correctedDispersionTotal.text =
             dispersionAnalysis.correctedDispersions["total_dispersion"].toString()
 
-        // hypothesis
-        binding.hypothesisResult.text =
+        //critical points
+        binding.criticalPointFactorA.text =
+                getString(
+                    R.string.critical_point,
+                    dispersionAnalysis.criticalPointA.toString()
+                )
+        binding.criticalPointFactorB.text =
             getString(
-                R.string.factors_influence,
-                dispersionAnalysis.isFactorAInfluence().toString(),
-                dispersionAnalysis.isFactorBInfluence().toString(),
+                R.string.critical_point,
+                dispersionAnalysis.criticalPointB.toString()
+            )
+        binding.criticalPointFactorsAB.text =
+            getString(
+                R.string.critical_point,
+                dispersionAnalysis.criticalPointAB.toString()
+            )
+
+        // observed criterion values
+        binding.observedCriterionValueA.text =
+                getString(
+                    R.string.observed_criterion_value,
+                    dispersionAnalysis.observedCriterionValueA.toString()
+                )
+        binding.observedCriterionValueB.text =
+            getString(
+                R.string.observed_criterion_value,
+                dispersionAnalysis.observedCriterionValueB.toString()
+            )
+        binding.observedCriterionValueAB.text =
+            getString(
+                R.string.observed_criterion_value,
+                dispersionAnalysis.observedCriterionValueAB.toString()
+            )
+
+        // hypothesis
+        binding.hypothesisResultFactorA.text =
+            getString(
+                R.string.factor_a_influence,
+                dispersionAnalysis.isFactorAInfluence().toString()
+            )
+
+        binding.hypothesisResultFactorB.text =
+            getString(
+                R.string.factor_b_influence,
+                dispersionAnalysis.isFactorBInfluence().toString()
+            )
+
+        binding.hypothesisResultFactorsAB.text =
+            getString(
+                R.string.factors_a_and_b_influence,
                 dispersionAnalysis.isFactorsABInfluence().toString()
             )
     }
